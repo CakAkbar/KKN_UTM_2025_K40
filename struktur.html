@@ -25,198 +25,311 @@
   <link rel="preload" as="image" href="./assets/images/profil-desa.jpg">
 
   <style>
-    /* CSS khusus untuk struktur organisasi */
-    .org-structure {
-      margin: 50px 0;
-    }
-    
-    .org-title {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    
-    .org-chart {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .tree {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .node {
-      position: relative;
-      margin: 20px 0;
-    }
-    
-    .node-content {
-      background: #2e7d32;
-      color: white;
-      padding: 15px 25px;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      min-width: 200px;
-      transition: all 0.3s ease;
-    }
-    
-    .node-content:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-      background: #1b5e20;
-    }
-    
-    .node-title {
-      font-weight: bold;
-      font-size: 1.1rem;
-      margin-bottom: 5px;
-    }
-    
-    .node-name {
-      font-size: 0.9rem;
-    }
-    
-    .children {
-      display: flex;
-      justify-content: center;
-      position: relative;
-      margin-top: 40px;
-    }
-    
-    .child {
-      margin: 0 15px;
-      position: relative;
-    }
-    
-    .child::before {
-      content: "";
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      width: 1px;
-      height: 20px;
-      background-color: #ccc;
-    }
-    
-    .node::before {
-      content: "";
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      width: 1px;
-      height: 20px;
-      background-color: #ccc;
-    }
-    
-    .horizontal-line {
-      position: absolute;
-      top: -20px;
-      height: 1px;
-      background-color: #ccc;
-    }
-    
-    .horizontal-line.first {
-      left: 50%;
-      right: 0;
-    }
-    
-    .horizontal-line.last {
-      left: 0;
-      right: 50%;
-    }
-    
-    .horizontal-line.middle {
-      left: 0;
-      right: 0;
-    }
-    
-    /* Styling untuk level berbeda */
-    .level-1 .node-content {
-      background: #1b5e20;
-      padding: 20px 30px;
-    }
-    
-    .level-2 .node-content {
-      background: #2e7d32;
-    }
-    
-    .level-3 .node-content {
-      background: #388e3c;
-    }
-    
-    .level-4 .node-content {
-      background: #43a047;
-    }
-    
-    /* Responsif */
-    @media (max-width: 768px) {
-      .children {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .child {
-        margin: 15px 0;
-      }
-      
-      .child::before {
-        display: none;
-      }
-      
-      .horizontal-line {
-        display: none;
-      }
-    }
-    
-    /* Tambahan untuk struktur lengkap */
-    .structure-section {
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      margin: 50px 0;
-    }
-    
-    .structure-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-    
-    .structure-card {
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
-    }
-    
-    .structure-card:hover {
-      transform: translateY(-5px);
-    }
-    
-    .card-header {
-      background: #2e7d32;
-      color: white;
-      padding: 15px;
-      text-align: center;
-    }
-    
-    .card-body {
-      padding: 15px;
-    }
-    
-    .card-body ul {
-      padding-left: 20px;
-    }
-    
-    .card-body li {
-      margin-bottom: 8px;
-    }
+/* ===== Struktur Organisasi CSS ===== */
+.org-structure {
+  margin: 50px 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.org-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.org-title h3 {
+  font-size: 1.5rem;
+  color: #2e7d32;
+  margin-bottom: 5px;
+}
+
+.org-title p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.org-chart {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 20px 0;
+}
+
+.tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: fit-content;
+  width: 100%;
+}
+
+.node {
+  position: relative;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.node-content {
+  background: #2e7d32;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  min-width: 200px;
+  transition: all 0.3s ease;
+  margin: 0 auto;
+}
+
+.node-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  background: #1b5e20;
+}
+
+.node-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.node-name {
+  font-size: 0.9rem;
+}
+
+.children {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.child {
+  margin: 0 15px 30px;
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+
+.child::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  width: 1px;
+  height: 20px;
+  background-color: #ccc;
+}
+
+.node::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  width: 1px;
+  height: 20px;
+  background-color: #ccc;
+}
+
+.horizontal-line {
+  position: absolute;
+  top: -20px;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.horizontal-line.first {
+  left: 50%;
+  right: 0;
+}
+
+.horizontal-line.last {
+  left: 0;
+  right: 50%;
+}
+
+.horizontal-line.middle {
+  left: 0;
+  right: 0;
+}
+
+/* Level Warna */
+.level-1 .node-content {
+  background: #1b5e20;
+  padding: 20px 30px;
+}
+
+.level-2 .node-content {
+  background: #2e7d32;
+}
+
+.level-3 .node-content {
+  background: #388e3c;
+}
+
+.level-4 .node-content {
+  background: #43a047;
+}
+
+/* ===== Struktur Detail CSS ===== */
+.structure-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  margin: 50px 0;
+}
+
+.structure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.structure-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.structure-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-header {
+  background: #2de136;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-body p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.card-body ul {
+  padding-left: 20px;
+  margin: 10px 0;
+}
+
+.card-body li {
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+/* Warna Variasi Section */
+.card-header.brown {
+  background: #26db29;
+}
+
+.card-header.blue {
+  background: #0277bd;
+}
+
+.card-header.pink {
+  background: #c2185b;
+}
+
+.card-header.orange {
+  background: #e65100;
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 992px) {
+  .structure-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .node-content {
+    padding: 12px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .org-chart {
+    overflow-x: visible;
+  }
+  
+  .children {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .child {
+    margin: 15px 0;
+    width: 100%;
+    max-width: 250px;
+  }
+  
+  .child::before,
+  .node::before {
+    display: none;
+  }
+  
+  .horizontal-line {
+    display: none;
+  }
+  
+  .structure-section {
+    padding: 30px 20px;
+  }
+  
+  .structure-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .org-title h3 {
+    font-size: 1.3rem;
+  }
+  
+  .node-content {
+    min-width: 180px;
+    padding: 10px 15px;
+  }
+  
+  .node-title {
+    font-size: 1rem;
+  }
+  
+  .node-name {
+    font-size: 0.85rem;
+  }
+  
+  .structure-section {
+    padding: 25px 15px;
+    margin: 30px 0;
+  }
+}
+
+/* ===== Utility Classes ===== */
+.text-center {
+  text-align: center;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
   </style>
 </head>
 
@@ -241,12 +354,12 @@
         </div>
 
         <ul class="navbar-list">
-          <li><a href="/" class="navbar-link">Home</a></li>
-          <li><a href="profil.html" class="navbar-link">Profil Desa</a></li>
-          <li><a href="struktur.html" class="navbar-link active">Pemerintahan</a></li>
-          <li><a href="#" class="navbar-link">Potensi Desa</a></li>
-          <li><a href="#" class="navbar-link">Galeri</a></li>
-          <li><a href="#" class="navbar-link">Kontak</a></li>
+          <li><a href="index.html" class="navbar-link">Home</a></li>
+          <li><a href="profil.html" class="navbar-link">Profil</a></li>
+          <li><a href="struktur.html" class="navbar-link">struktur</a></li>
+          <li><a href="kegiatan.html" class="navbar-link">Kegiatan</a></li>
+          <li><a href="surat.html" class="navbar-link">layanan</a></li>
+          <li><a href="kontak.html" class="navbar-link">Kontak</a></li>
         </ul>
       </nav>
 
@@ -284,11 +397,19 @@
             
             <div class="org-chart">
               <div class="tree">
+                <!-- Level 1 - BPD -->
+                <div class="node level-1">
+                  <div class="node-content">
+                    <div class="node-title">BPD</div>
+                    <div class="node-name">ABD. SALEH</div>
+                  </div>
+                </div>
+                
                 <!-- Level 1 - Kepala Desa -->
                 <div class="node level-1">
                   <div class="node-content">
                     <div class="node-title">KEPALA DESA</div>
-                    <div class="node-name">H. MOH. SALEH, S.Pd.I</div>
+                    <div class="node-name">JUHAIRIYAH</div>
                   </div>
                   
                   <div class="children">
@@ -300,39 +421,46 @@
                       <div class="node level-2">
                         <div class="node-content">
                           <div class="node-title">SEKRETARIS DESA</div>
-                          <div class="node-name">MOH. RIDWAN, S.Pd</div>
+                          <div class="node-name">SUHIL</div>
                         </div>
                         
                         <div class="children">
                           <!-- Garis koneksi -->
                           <div class="horizontal-line middle"></div>
                           
-                          <!-- Level 3 - Kasi Pemerintahan -->
+                          <!-- Level 3 - Kaur -->
                           <div class="child">
                             <div class="node level-3">
                               <div class="node-content">
-                                <div class="node-title">KASI PEMERINTAHAN</div>
-                                <div class="node-name">MOH. ALIEF, S.Pd</div>
+                                <div class="node-title">KAUR TATA USAHA & UMUM</div>
+                                <div class="node-name">SALEHODDIN</div>
                               </div>
                             </div>
                           </div>
                           
-                          <!-- Level 3 - Kasi Kesejahteraan -->
                           <div class="child">
                             <div class="node level-3">
                               <div class="node-content">
-                                <div class="node-title">KASI KESEJAHTERAAN</div>
-                                <div class="node-name">SITI FATIMAH</div>
+                                <div class="node-title">KAUR KEUANGAN</div>
+                                <div class="node-name">RAHI</div>
                               </div>
                             </div>
                           </div>
                           
-                          <!-- Level 3 - Kasi Pelayanan -->
                           <div class="child">
                             <div class="node level-3">
                               <div class="node-content">
-                                <div class="node-title">KASI PELAYANAN</div>
-                                <div class="node-name">ABD. ROHIM</div>
+                                <div class="node-title">KAUR PERENCANAAN</div>
+                                <div class="node-name">RAHI</div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div class="child">
+                            <div class="node level-3">
+                              <div class="node-content">
+                                <div class="node-title">KAUR KEAMANAN</div>
+                                <div class="node-name">MOHAMMAD</div>
                               </div>
                             </div>
                           </div>
@@ -340,44 +468,101 @@
                       </div>
                     </div>
                     
-                    <!-- Level 2 - Kaur Keuangan -->
+                    <!-- Level 2 - Pelaksana Teknis -->
                     <div class="child">
                       <div class="node level-2">
                         <div class="node-content">
-                          <div class="node-title">KAUR KEUANGAN</div>
-                          <div class="node-name">MOH. HASYIM</div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <!-- Level 2 - Kaur TU & Umum -->
-                    <div class="child">
-                      <div class="node level-2">
-                        <div class="node-content">
-                          <div class="node-title">KAUR TU & UMUM</div>
-                          <div class="node-name">MOH. ZAINI</div>
+                          <div class="node-title">PELAKSANA TEKNIS</div>
                         </div>
                         
                         <div class="children">
                           <!-- Garis koneksi -->
                           <div class="horizontal-line middle"></div>
                           
-                          <!-- Level 3 - Staf Administrasi -->
                           <div class="child">
                             <div class="node level-3">
                               <div class="node-content">
-                                <div class="node-title">STAF ADMINISTRASI</div>
-                                <div class="node-name">SITI AISYAH</div>
+                                <div class="node-title">SEKSI PEMERINTAHAN</div>
                               </div>
                             </div>
                           </div>
                           
-                          <!-- Level 3 - Operator Desa -->
                           <div class="child">
                             <div class="node level-3">
                               <div class="node-content">
-                                <div class="node-title">OPERATOR DESA</div>
-                                <div class="node-name">AHMAD FAUZI</div>
+                                <div class="node-title">SEKSI KESEJAHTERAAN</div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div class="child">
+                            <div class="node level-3">
+                              <div class="node-content">
+                                <div class="node-title">SEKSI PELAYANAN</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Level 2 - Pelaksana Kewilayahan -->
+                    <div class="child">
+                      <div class="node level-2">
+                        <div class="node-content">
+                          <div class="node-title">PELAKSANA KEWILAYAHAN</div>
+                        </div>
+                        
+                        <div class="children">
+                          <!-- Garis koneksi -->
+                          <div class="horizontal-line middle"></div>
+                          
+                          <div class="child">
+                            <div class="node level-3">
+                              <div class="node-content">
+                                <div class="node-title">KEPALA DUSUN BERUH</div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div class="child">
+                            <div class="node level-3">
+                              <div class="node-content">
+                                <div class="node-title">KEPALA DUSUN GERUNG</div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div class="child">
+                            <div class="node level-3">
+                              <div class="node-content">
+                                <div class="node-title">KEPALA DUSUN SUMOR ASEN</div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div class="child">
+                            <div class="node level-3">
+                              <div class="node-content">
+                                <div class="node-title">KEPALA DUSUN ARES TENGAH</div>
+                                <div class="node-name">SYAHRANTO</div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div class="child">
+                            <div class="node level-3">
+                              <div class="node-content">
+                                <div class="node-title">KEPALA DUSUN KENDAL</div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div class="child">
+                            <div class="node level-3">
+                              <div class="node-content">
+                                <div class="node-title">KEPALA DUSUN JEPON</div>
+                                <div class="node-name">ABD MUGHNI</div>
                               </div>
                             </div>
                           </div>
@@ -399,20 +584,35 @@
           <h2 class="h2 section-title">Struktur Lengkap Pemerintahan Desa Bindang</h2>
           
           <div class="structure-grid">
+            <!-- BPD -->
+            <div class="structure-card">
+              <div class="card-header" style="background: 2de136;">
+                <h3 class="h4">BPD (Badan Permusyawaratan Desa)</h3>
+              </div>
+              <div class="card-body">
+                <p><strong>Anggota:</strong> ABD. SALEH</p>
+                <p><strong>Tugas Pokok:</strong></p>
+                <ul>
+                  <li>Badan perwakilan warga desa</li>
+                  <li>Berperan dalam pembuatan peraturan desa</li>
+                  <li>Pengawasan terhadap kebijakan Pemerintah Desa</li>
+                </ul>
+              </div>
+            </div>
+            
             <!-- Kepala Desa -->
             <div class="structure-card">
               <div class="card-header">
                 <h3 class="h4">Kepala Desa</h3>
               </div>
               <div class="card-body">
-                <p><strong>Nama:</strong> H. MOH. SALEH, S.Pd.I</p>
-                <p><strong>Masa Jabatan:</strong> 2023-2028</p>
+                <p><strong>Nama:</strong> JUHAIRIYAH</p>
                 <p><strong>Tugas Pokok:</strong></p>
                 <ul>
-                  <li>Memimpin penyelenggaraan pemerintahan desa</li>
-                  <li>Membina kehidupan masyarakat desa</li>
-                  <li>Membina perekonomian desa</li>
-                  <li>Mengkoordinasikan pembangunan desa</li>
+                  <li>Pemimpin tertinggi dalam struktur pemerintahan desa</li>
+                  <li>Pengambilan keputusan dan kebijakan strategis</li>
+                  <li>Pengawasan terhadap pelaksanaan program pembangunan</li>
+                  <li>Pelayanan masyarakat</li>
                 </ul>
               </div>
             </div>
@@ -423,64 +623,27 @@
                 <h3 class="h4">Sekretaris Desa</h3>
               </div>
               <div class="card-body">
-                <p><strong>Nama:</strong> MOH. RIDWAN, S.Pd</p>
+                <p><strong>Nama:</strong> SUHIL</p>
                 <p><strong>Tugas Pokok:</strong></p>
                 <ul>
-                  <li>Membantu kepala desa dalam bidang administrasi</li>
-                  <li>Menyelenggarakan administrasi pemerintahan</li>
-                  <li>Mengkoordinasi kegiatan kerja perangkat desa</li>
-                  <li>Menyiapkan bahan laporan penyelenggaraan pemerintahan desa</li>
+                  <li>Penyelenggaraan administrasi desa</li>
+                  <li>Mendukung kelancaran tugas Kepala Desa</li>
+                  <li>Membawahi beberapa Kepala Urusan (Kaur)</li>
                 </ul>
               </div>
             </div>
             
-            <!-- Kasi Pemerintahan -->
+            <!-- Kaur Tata Usaha & Umum -->
             <div class="structure-card">
               <div class="card-header">
-                <h3 class="h4">Kasi Pemerintahan</h3>
+                <h3 class="h4">Kaur Tata Usaha & Umum</h3>
               </div>
               <div class="card-body">
-                <p><strong>Nama:</strong> MOH. ALIEF, S.Pd</p>
+                <p><strong>Nama:</strong> SALEHODDIN</p>
                 <p><strong>Tugas Pokok:</strong></p>
                 <ul>
-                  <li>Melaksanakan urusan pemerintahan</li>
-                  <li>Pembinaan ketentraman dan ketertiban</li>
-                  <li>Penyelesaian perselisihan masyarakat</li>
-                  <li>Pembinaan lembaga kemasyarakatan</li>
-                </ul>
-              </div>
-            </div>
-            
-            <!-- Kasi Kesejahteraan -->
-            <div class="structure-card">
-              <div class="card-header">
-                <h3 class="h4">Kasi Kesejahteraan</h3>
-              </div>
-              <div class="card-body">
-                <p><strong>Nama:</strong> SITI FATIMAH</p>
-                <p><strong>Tugas Pokok:</strong></p>
-                <ul>
-                  <li>Melaksanakan urusan kesejahteraan masyarakat</li>
-                  <li>Pembinaan kesehatan masyarakat</li>
-                  <li>Pembinaan pendidikan dan pelatihan</li>
-                  <li>Pembinaan gotong royong</li>
-                </ul>
-              </div>
-            </div>
-            
-            <!-- Kasi Pelayanan -->
-            <div class="structure-card">
-              <div class="card-header">
-                <h3 class="h4">Kasi Pelayanan</h3>
-              </div>
-              <div class="card-body">
-                <p><strong>Nama:</strong> ABD. ROHIM</p>
-                <p><strong>Tugas Pokok:</strong></p>
-                <ul>
-                  <li>Melaksanakan urusan pelayanan umum</li>
-                  <li>Penyediaan fasilitas pelayanan umum</li>
-                  <li>Penyuluhan dan penerangan masyarakat</li>
-                  <li>Pelayanan administrasi terpadu</li>
+                  <li>Urusan administrasi dan umum di desa</li>
+                  <li>Pengelolaan data dan dokumen penting desa</li>
                 </ul>
               </div>
             </div>
@@ -491,30 +654,41 @@
                 <h3 class="h4">Kaur Keuangan</h3>
               </div>
               <div class="card-body">
-                <p><strong>Nama:</strong> MOH. HASYIM</p>
+                <p><strong>Nama:</strong> RAHI</p>
                 <p><strong>Tugas Pokok:</strong></p>
                 <ul>
-                  <li>Melaksanakan urusan keuangan desa</li>
-                  <li>Penyusunan APBDes</li>
-                  <li>Pembukuan keuangan desa</li>
-                  <li>Pelaporan keuangan desa</li>
+                  <li>Pengelolaan keuangan desa</li>
+                  <li>Pendapatan dan pengeluaran desa</li>
                 </ul>
               </div>
             </div>
             
-            <!-- Kaur TU & Umum -->
+            <!-- Kaur Perencanaan -->
             <div class="structure-card">
               <div class="card-header">
-                <h3 class="h4">Kaur TU & Umum</h3>
+                <h3 class="h4">Kaur Perencanaan</h3>
               </div>
               <div class="card-body">
-                <p><strong>Nama:</strong> MOH. ZAINI</p>
+                <p><strong>Nama:</strong> RAHI</p>
                 <p><strong>Tugas Pokok:</strong></p>
                 <ul>
-                  <li>Melaksanakan urusan tata usaha dan umum</li>
-                  <li>Pembinaan administrasi desa</li>
-                  <li>Pengelolaan arsip dan dokumentasi</li>
-                  <li>Pengelolaan barang inventaris desa</li>
+                  <li>Perencanaan pembangunan desa</li>
+                  <li>Pengembangan kebijakan untuk program masa depan</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Kaur Keamanan -->
+            <div class="structure-card">
+              <div class="card-header">
+                <h3 class="h4">Kaur Keamanan</h3>
+              </div>
+              <div class="card-body">
+                <p><strong>Nama:</strong> MOHAMMAD</p>
+                <p><strong>Tugas Pokok:</strong></p>
+                <ul>
+                  <li>Masalah keamanan dan ketertiban di desa</li>
+                  <li>Koordinasi dengan pihak berwenang terkait</li>
                 </ul>
               </div>
             </div>
@@ -522,162 +696,151 @@
         </div>
       </section>
 
-      <!-- BPD Section -->
-      <section class="section service" aria-labelledby="bpd-label">
+      <!-- Pelaksana Teknis Section -->
+      <section class="section service" aria-labelledby="pelaksana-label">
         <div class="container">
-          <p class="section-subtitle" id="bpd-label">Lembaga Desa</p>
-          <h2 class="h2 section-title">Badan Permusyawaratan Desa (BPD)</h2>
+          <p class="section-subtitle" id="pelaksana-label">Pelaksana Teknis</p>
+          <h2 class="h2 section-title">Seksi-seksi Pelaksana Teknis</h2>
           
           <div class="structure-grid">
-            <!-- Ketua BPD -->
-            <div class="structure-card">
-              <div class="card-header" style="background: #5d4037;">
-                <h3 class="h4">Ketua BPD</h3>
-              </div>
-              <div class="card-body">
-                <p><strong>Nama:</strong> H. ABDUL KARIM</p>
-                <p><strong>Tugas Pokok:</strong></p>
-                <ul>
-                  <li>Memimpin penyelenggaraan BPD</li>
-                  <li>Mengkoordinasi kegiatan BPD</li>
-                  <li>Menandatangani keputusan BPD</li>
-                  <li>Mewakili BPD di dalam dan luar pengadilan</li>
-                </ul>
-              </div>
-            </div>
-            
-            <!-- Wakil Ketua BPD -->
-            <div class="structure-card">
-              <div class="card-header" style="background: #5d4037;">
-                <h3 class="h4">Wakil Ketua BPD</h3>
-              </div>
-              <div class="card-body">
-                <p><strong>Nama:</strong> MOH. SAIFUL</p>
-                <p><strong>Tugas Pokok:</strong></p>
-                <ul>
-                  <li>Membantu ketua dalam menjalankan tugasnya</li>
-                  <li>Menggantikan ketua saat berhalangan</li>
-                  <li>Melaksanakan tugas lain yang diberikan ketua</li>
-                </ul>
-              </div>
-            </div>
-            
-            <!-- Sekretaris BPD -->
-            <div class="structure-card">
-              <div class="card-header" style="background: #5d4037;">
-                <h3 class="h4">Sekretaris BPD</h3>
-              </div>
-              <div class="card-body">
-                <p><strong>Nama:</strong> SITI AMINAH</p>
-                <p><strong>Tugas Pokok:</strong></p>
-                <ul>
-                  <li>Menyelenggarakan administrasi BPD</li>
-                  <li>Menyiapkan bahan rapat BPD</li>
-                  <li>Membuat notulen rapat BPD</li>
-                  <li>Mendokumentasikan keputusan BPD</li>
-                </ul>
-              </div>
-            </div>
-            
-            <!-- Anggota BPD -->
-            <div class="structure-card">
-              <div class="card-header" style="background: #5d4037;">
-                <h3 class="h4">Anggota BPD</h3>
-              </div>
-              <div class="card-body">
-                <p><strong>Anggota:</strong></p>
-                <ul>
-                  <li>AHMAD SYAFII</li>
-                  <li>MOH. ALI</li>
-                  <li>SITI KHODIJAH</li>
-                  <li>ABDUL GHOFUR</li>
-                  <li>FATIMATUZ ZAHRO</li>
-                </ul>
-                <p><strong>Tugas Pokok:</strong></p>
-                <ul>
-                  <li>Menyampaikan aspirasi masyarakat</li>
-                  <li>Melakukan pengawasan terhadap kinerja perangkat desa</li>
-                  <li>Menyusun peraturan desa</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Lembaga Kemasyarakatan Section -->
-      <section class="section" aria-labelledby="lembaga-label">
-        <div class="container">
-          <p class="section-subtitle" id="lembaga-label">Lembaga Kemasyarakatan</p>
-          <h2 class="h2 section-title">Lembaga Lainnya di Desa Bindang</h2>
-          
-          <div class="structure-grid">
-            <!-- LPM -->
+            <!-- Seksi Pemerintahan -->
             <div class="structure-card">
               <div class="card-header" style="background: #0277bd;">
-                <h3 class="h4">Lembaga Pemberdayaan Masyarakat (LPM)</h3>
+                <h3 class="h4">Seksi Pemerintahan</h3>
               </div>
               <div class="card-body">
-                <p><strong>Ketua:</strong> H. MOH. HASAN</p>
-                <p><strong>Tugas:</strong></p>
+                <p><strong>Tugas Pokok:</strong></p>
                 <ul>
-                  <li>Menampung dan menyalurkan aspirasi masyarakat</li>
-                  <li>Melakukan pemberdayaan masyarakat</li>
-                  <li>Mendorong partisipasi masyarakat dalam pembangunan</li>
-                  <li>Bekerja sama dengan pemerintah desa dalam perencanaan pembangunan</li>
+                  <li>Mengelola urusan administratif pemerintahan desa</li>
+                  <li>Pembuatan kebijakan lokal</li>
+                  <li>Surat-menyurat dan kegiatan pemerintahan sehari-hari</li>
                 </ul>
               </div>
             </div>
             
-            <!-- PKK -->
+            <!-- Seksi Kesejahteraan -->
             <div class="structure-card">
-              <div class="card-header" style="background: #c2185b;">
-                <h3 class="h4">Tim Penggerak PKK</h3>
+              <div class="card-header" style="background: #0277bd;">
+                <h3 class="h4">Seksi Kesejahteraan</h3>
               </div>
               <div class="card-body">
-                <p><strong>Ketua:</strong> HJ. SITI MARIYAM</p>
-                <p><strong>Tugas:</strong></p>
+                <p><strong>Tugas Pokok:</strong></p>
                 <ul>
-                  <li>Melaksanakan program PKK di desa</li>
-                  <li>Meningkatkan kesejahteraan keluarga</li>
-                  <li>Menggerakkan partisipasi masyarakat dalam pembangunan</li>
-                  <li>Melaksanakan 10 program pokok PKK</li>
+                  <li>Program-program kesejahteraan sosial dan kesehatan</li>
+                  <li>Bantuan sosial</li>
+                  <li>Kesehatan masyarakat dan pendidikan</li>
                 </ul>
               </div>
             </div>
             
-            <!-- Karang Taruna -->
+            <!-- Seksi Pelayanan -->
             <div class="structure-card">
-              <div class="card-header" style="background: #e65100;">
-                <h3 class="h4">Karang Taruna</h3>
+              <div class="card-header" style="background: #0277bd;">
+                <h3 class="h4">Seksi Pelayanan</h3>
               </div>
               <div class="card-body">
-                <p><strong>Ketua:</strong> AHMAD RIFAI</p>
-                <p><strong>Tugas:</strong></p>
+                <p><strong>Tugas Pokok:</strong></p>
                 <ul>
-                  <li>Mengembangkan kreativitas pemuda</li>
-                  <li>Menyelenggarakan kegiatan sosial</li>
-                  <li>Membina kegiatan olahraga dan kesenian</li>
-                  <li>Menggerakkan partisipasi pemuda dalam pembangunan</li>
+                  <li>Pelayanan kepada warga desa</li>
+                  <li>Pembuatan KTP, akta kelahiran</li>
+                  <li>Pelayanan administrasi lainnya</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pelaksana Kewilayahan Section -->
+      <section class="section" aria-labelledby="wilayah-label">
+        <div class="container">
+          <p class="section-subtitle" id="wilayah-label">Pelaksana Kewilayahan</p>
+          <h2 class="h2 section-title">Kepala Dusun Desa Bindang</h2>
+          
+          <div class="structure-grid">
+            <!-- Dusun Beruh -->
+            <div class="structure-card">
+              <div class="card-header" style="background: #0aedd3;">
+                <h3 class="h4">Kepala Dusun Beruh</h3>
+              </div>
+              <div class="card-body">
+                <p><strong>Tugas Pokok:</strong></p>
+                <ul>
+                  <li>Melaksanakan kebijakan desa di tingkat dusun</li>
+                  <li>Membantu Kepala Desa dalam koordinasi wilayah</li>
                 </ul>
               </div>
             </div>
             
-            <!-- BUMDes -->
+            <!-- Dusun Gerung -->
             <div class="structure-card">
-              <div class="card-header" style="background: #2e7d32;">
-                <h3 class="h4">BUMDes Bindang Sejahtera</h3>
+              <div class="card-header" style="background: #0aedd3;">
+                <h3 class="h4">Kepala Dusun Gerung</h3>
               </div>
               <div class="card-body">
-                <p><strong>Direktur:</strong> MOH. FADLI</p>
-                <p><strong>Unit Usaha:</strong></p>
+                <p><strong>Tugas Pokok:</strong></p>
                 <ul>
-                  <li>Usaha Simpan Pinjam</li>
-                  <li>Warung Desa</li>
-                  <li>Pengelolaan Air Bersih</li>
-                  <li>Pemasaran Hasil Pertanian</li>
+                  <li>Melaksanakan kebijakan desa di tingkat dusun</li>
+                  <li>Membantu Kepala Desa dalam koordinasi wilayah</li>
                 </ul>
-                <p><strong>Tujuan:</strong> Meningkatkan perekonomian desa dan kesejahteraan masyarakat</p>
+              </div>
+            </div>
+            
+            <!-- Dusun Sumor Asen -->
+            <div class="structure-card">
+              <div class="card-header" style="background: #0aedd3;;">
+                <h3 class="h4">Kepala Dusun Sumor Asen</h3>
+              </div>
+              <div class="card-body">
+                <p><strong>Tugas Pokok:</strong></p>
+                <ul>
+                  <li>Melaksanakan kebijakan desa di tingkat dusun</li>
+                  <li>Membantu Kepala Desa dalam koordinasi wilayah</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Dusun Ares Tengah -->
+            <div class="structure-card">
+              <div class="card-header" style="background: #0aedd3;;">
+                <h3 class="h4">Kepala Dusun Ares Tengah</h3>
+              </div>
+              <div class="card-body">
+                <p><strong>Nama:</strong> SYAHRANTO</p>
+                <p><strong>Tugas Pokok:</strong></p>
+                <ul>
+                  <li>Melaksanakan kebijakan desa di tingkat dusun</li>
+                  <li>Membantu Kepala Desa dalam koordinasi wilayah</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Dusun Kendal -->
+            <div class="structure-card">
+              <div class="card-header" style="background: #0aedd3;;">
+                <h3 class="h4">Kepala Dusun Kendal</h3>
+              </div>
+              <div class="card-body">
+                <p><strong>Tugas Pokok:</strong></p>
+                <ul>
+                  <li>Melaksanakan kebijakan desa di tingkat dusun</li>
+                  <li>Membantu Kepala Desa dalam koordinasi wilayah</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Dusun Jepon -->
+            <div class="structure-card">
+              <div class="card-header" style="background: #0aedd3;;">
+                <h3 class="h4">Kepala Dusun Jepon</h3>
+              </div>
+              <div class="card-body">
+                <p><strong>Nama:</strong> ABD MUGHNI</p>
+                <p><strong>Tugas Pokok:</strong></p>
+                <ul>
+                  <li>Melaksanakan kebijakan desa di tingkat dusun</li>
+                  <li>Membantu Kepala Desa dalam koordinasi wilayah</li>
+                </ul>
               </div>
             </div>
           </div>
